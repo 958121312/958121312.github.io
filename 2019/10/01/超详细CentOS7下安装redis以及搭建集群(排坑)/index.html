@@ -6,7 +6,7 @@
     
     
     
-    <title>云霄阁</title>
+    <title>超详细CentOs7下安装redis以及搭建集群(排坑) | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,13 +39,36 @@
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超详细CentOs7下安装redis以及搭建集群(排坑)">
+<meta property="og:url" content="http://yoursite.com/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/index.html">
 <meta property="og:site_name" content="云霄阁">
+<meta property="og:description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg06.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg03.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg05.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg01.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg02.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg07.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg08.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg09.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg10.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg11.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg12.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg13.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg14.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg15.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg16.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg17.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg18.png">
+<meta property="og:image" content="d:/Hexo/source/_posts/img/redis/redisImg04.png">
+<meta property="og:updated_time" content="2019-10-01T17:27:51.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云霄阁">
+<meta name="twitter:title" content="超详细CentOs7下安装redis以及搭建集群(排坑)">
+<meta name="twitter:description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
+<meta name="twitter:image" content="d:/Hexo/source/_posts/img/redis/redisImg06.png">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -58,7 +81,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"   >
+    <aside id="menu"  class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -79,7 +102,7 @@
     <div class="scroll-wrap flex-col">
       <ul class="nav">
         
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/"  >
                     <i class="icon icon-lg icon-home"></i>
                     <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
@@ -141,26 +164,23 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">云霄阁</div>
+        <div class="flex-col header-title ellipsis">超详细CentOs7下安装redis以及搭建集群(排坑)</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
     </div>
 </header>
-<header class="content-header index-header">
+<header class="content-header post-header">
     
     
     <div class="container fade-scale">
         <div id="myheader">
             <h1 class="title">
-                 
-                    云霄阁
                 
             </h1>
             <h5 class="subtitle">
                 
-                    早知如此相遇不如不遇
                 
             </h5>
         </div>
@@ -168,34 +188,47 @@
 
 </header>
 
+
 <div class="container body-wrap">
-    <ul class="post-list">
     
-        <li class="post-list-item fade">
-            <article id="post-超详细CentOS7下安装redis以及搭建集群(排坑)"
-  class="article-card article-type-post" itemprop="blogPost">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装CentOS7"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.安装CentOS7</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装redis"><span class="post-toc-number">2.</span> <span class="post-toc-text">一.安装redis</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-超详细CentOS7下安装redis以及搭建集群(排坑)"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-    
+    <div class="post-card">
+        <h1 class="post-card-title">超详细CentOs7下安装redis以及搭建集群(排坑)</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2019-10-01 00:00:00" datetime="2019-09-30T16:00:00.000Z"  itemprop="datePublished">2019-10-01</time>
+
+            <br id="mybreak"/>
+            
+<script>
+	mybreak.style="display:none";
+</script>
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/">超详细CentOs7下安装redis以及搭建集群(排坑)</a>
-    </h3>
-  
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
 
 
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-01 00:00:00" datetime="2019-09-30T16:00:00.000Z"  itemprop="datePublished">2019-10-01</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <a id="more"></a>
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            早知如此相遇不如不遇,醉笑三千席不诉离别意
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <a id="more"></a>
 
 <h3 id="一-安装CentOS7"><a href="#一-安装CentOS7" class="headerlink" title="一.安装CentOS7"></a>一.安装CentOS7</h3><p><strong>1.下载VMware</strong></p>
 <p><strong>2.下载CentOS 7镜像</strong></p>
@@ -265,59 +298,64 @@
 <p>​    首先安装gcc依赖</p>
 <p>​            </p>
 
-    
-        <div class="post-more-div">
-            <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/" class="post-more waves-button">
-                Continue reading...
-            </a>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-10-01T17:27:51.786Z" itemprop="dateUpdated">2019-10-02 01:27:51</time>
+</span>
+
+
+        
+        原文链接：<a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/" target="_blank" rel="external">http://yoursite.com/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://yoursite.com'">
+            <img src="/img/avatar.jpeg" alt="yun tian">
+            <a>yun tian</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+
+
         </div>
     </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-SpringBoot自动配置详解"
-  class="article-card article-type-post" itemprop="blogPost">
 
     
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/09/25/SpringBoot自动配置详解/">SpringBoot自动配置详解</a>
-    </h3>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-09-25 00:00:00" datetime="2019-09-24T16:00:00.000Z"  itemprop="datePublished">2019-09-25</time>
-
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/25/SpringBoot自动配置详解/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：SpringBoot自动配置详解">下一篇：SpringBoot自动配置详解</h4>
+      </a>
     </div>
+  
+</nav>
 
-    <div class="post-content" id="post-content" itemprop="postContent">
+
 
     
-        <p>在我们使用SpringBoot做快速开发的时候都知道,SpringBoot有一个核心文件,那就是放置在resources文件夹下的application.properties(yml)文件</p>
-<p>这是详细内容</p>
     
-        <div class="post-more-div">
-            <a href="/2019/09/25/SpringBoot自动配置详解/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
+
     
+
+    
+
+
 </article>
-
-        </li>
-    
-    </ul>
-
-    
 
 </div>
 
