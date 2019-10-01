@@ -41,7 +41,7 @@
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yuntian.design/index.html">
 <meta property="og:site_name" content="云霄阁">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -195,76 +195,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <a id="more"></a>
-
-<h3 id="一-安装CentOS7"><a href="#一-安装CentOS7" class="headerlink" title="一.安装CentOS7"></a>一.安装CentOS7</h3><p><strong>1.下载VMware</strong></p>
-<p><strong>2.下载CentOS 7镜像</strong></p>
-<p><strong>3.在虚拟机上安装CentOS 7</strong></p>
-<p>选择创建虚拟机</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg06.png" alt="创建虚拟机" style="zoom:50%;">
-
-<p><em>选择自定义</em></p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg03.png" alt="选择自定义" style="zoom:80%;">
-
-<p>这里看你下载的VMware是什么版本,我下载的是15X所以我选择15.X</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg05.png" alt="版本选择" style="zoom:80%;">
-
-<p>选择稍后安装操作系统</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg01.png" alt="稍后安装操作系统" style="zoom:80%;">
-
-<p>随后点下一步,这里操作系统选择Linux,版本选择CentOS7</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg02.png" alt="选择操作系统和版本" style="zoom:80%;">
-
-<p>安装位置改不改看你自己</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg07.png" alt="安装路径" style="zoom:80%;">
-
-<p>这里处理器数量根据自己CPU情况来定</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg08.png" alt="处理器核数量" style="zoom:80%;">
-
-<p>运行内存默认为1G，这里因为我是8G运行内存所以我选择2G,根据自己机器情况来定</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg09.png" alt="内存" style="zoom:80%;">
-
-<p>网络类型这里我们选择桥连接,桥连接也就是直接用我们主机上的网络,并不是Linux重新建立网络连接</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg10.png" alt="网络类型" style="zoom:80%;">
-
-<p>接下来的两步默认即可,然后选择创建新虚拟磁盘</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg11.png" alt="创建虚拟磁盘" style="zoom:80%;">
-
-<p>默认大小20G,可以先不改,后续需要可以再加,选择将虚拟磁盘拆分成多个文件</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg12.png" alt="磁盘容量" style="zoom:80%;">
-
-<p>然后一直点下一步最后虚拟机创建完成</p>
-<p>打开虚拟机设置,因为我们在上面选择了稍后安装操作系统,所以我们现在需要选择CentOS7的镜像</p>
-<p>选择CD/DVD(IDE) 在右侧单击预览找到我们在第一步下载的CentOs7镜像文件</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg13.png" alt="选择镜像" style="zoom:50%;">
-
-
-
-<p>安装好后运行虚拟机，直接选择第一个安装CentOS7,如果选择第二个的话会选检测你的环境,可能会出现一些没必要的报错</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg14.png" alt="安装CentOS7" style="zoom:80%;">
-
-<p>选择第一个后等待它安装,如果没出意外安装好后会出现界面</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg15.png" alt="安装CentOS7" style="zoom:67%;">
-
-<p>语言我们选择简体中文,点击下一步后进入安装信息界面,如果出现这种黄色感叹号,只要我们点进去然后再点左上角完成就没事了</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg16.png" alt="安装CentOS" style="zoom:80%;">
-
-
-
-<img src="D:\Hexo\source\_posts\img\redis\redisImg17.png" alt="安装CentOS7" style="zoom:80%;">
-
-<p>然后点击开始安装,在安装的时候可以设置Root密码,否则用默认的不怎么舒服</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg18.png" alt="安装CentOS7" style="zoom:80%;">
-
-<p>等待它安装,安装好后重启</p>
-<h3 id="一-安装redis"><a href="#一-安装redis" class="headerlink" title="一.安装redis"></a>一.安装redis</h3><p><strong>1.下载redis</strong></p>
-<p>​    既然要安装redis那么我们得有redis,所以进入redis官网下载</p>
-<img src="D:\Hexo\source\_posts\img\redis\redisImg04.png" alt="redis官网" style="zoom:80%;">     
-
-<p><strong>2.准备工作</strong></p>
-<p>​    首先安装gcc依赖</p>
-<p>​            </p>
-
+        <p>本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑</p>
     
         <div class="post-more-div">
             <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群(排坑)/" class="post-more waves-button">
@@ -327,7 +258,7 @@
             <i class="icon icon-lg icon-copyright"></i>
             2019
             <i class="icon icon-lg icon-heart"></i>
-            <a href="http://yoursite.com">yuntian.com</a>
+            <a href="http://yuntian.design">yuntian.com</a>
             <!-- <br/>
             Power by
             <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
