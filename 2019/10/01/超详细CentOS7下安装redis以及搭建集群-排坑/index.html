@@ -46,29 +46,34 @@
 <meta property="og:site_name" content="云霄阁">
 <meta property="og:description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg03.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg05.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg01.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg02.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg07.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg08.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg09.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg10.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg11.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg12.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg13.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg14.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg15.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg16.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg17.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg18.png">
-<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo/source/_posts/img/redis/redisImg04.png">
-<meta property="og:updated_time" content="2019-10-01T18:11:11.264Z">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg03.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg05.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg01.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg02.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg07.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg08.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg09.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg10.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg11.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg12.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg13.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg14.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg15.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg16.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg17.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg18.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg19.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg20.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg21.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg22.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg23.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg24.png">
+<meta property="og:updated_time" content="2019-10-24T16:01:41.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="超详细CentOs7下安装redis以及搭建集群(排坑)">
 <meta name="twitter:description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
-<meta name="twitter:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png">
+<meta name="twitter:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -194,7 +199,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装CentOS7"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.安装CentOS7</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装redis"><span class="post-toc-number">2.</span> <span class="post-toc-text">一.安装redis</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装CentOS7"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.安装CentOS7</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装redis"><span class="post-toc-number">2.</span> <span class="post-toc-text">一.安装redis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步-首先安装gcc依赖"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">第一步:首先安装gcc依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二步-下载redis安装包"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第二步:下载redis安装包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三步-解压压缩包"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第三步: 解压压缩包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第四步-为了后续操作方便也可以将文件名改名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">第四步:为了后续操作方便也可以将文件名改名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第五步：进入到目录然后直接编译"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">第五步：进入到目录然后直接编译</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第六步：编译好后进入到src目录下将src加到-usr-local-bin-目录"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">第六步：编译好后进入到src目录下将src加到 /usr/local/bin 目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第七步：测试是否安装成功"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">第七步：测试是否安装成功</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第八步：配置redis后台运行"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">第八步：配置redis后台运行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第九步：配置远程连接"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">第九步：配置远程连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-搭建集群"><span class="post-toc-number"></span> <span class="post-toc-text">二.搭建集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步：准备6份redis"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">第一步：准备6份redis</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步：启动redis集群"><span class="post-toc-number">1.</span> <span class="post-toc-text">第二步：启动redis集群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步：分配槽"><span class="post-toc-number">2.</span> <span class="post-toc-text">第三步：分配槽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#终于把redis集群搭好了-感谢您耐心的看到这里-谢谢！"><span class="post-toc-number">3.</span> <span class="post-toc-text">终于把redis集群搭好了,感谢您耐心的看到这里,谢谢！</span></a></li></ol>
         </nav>
     </aside>
    
@@ -237,77 +242,141 @@
 <p><strong>2.下载CentOS 7镜像</strong></p>
 <p><strong>3.在虚拟机上安装CentOS 7</strong></p>
 <p>选择创建虚拟机</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png" title="创建虚拟机">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg06.png" style="zoom:60%;">
 
 <p><em>选择自定义</em></p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg03.png" alt="选择自定义" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg03.png" style="zoom:80%;">
 
 <p>这里看你下载的VMware是什么版本,我下载的是15X所以我选择15.X</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg05.png" alt="版本选择" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg05.png" style="zoom:80%;">
 
 <p>选择稍后安装操作系统</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg01.png" alt="稍后安装操作系统" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg01.png" style="zoom:80%;">
 
 <p>随后点下一步,这里操作系统选择Linux,版本选择CentOS7</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg02.png" alt="选择操作系统和版本" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg02.png" style="zoom:80%;">
 
 <p>安装位置改不改看你自己</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg07.png" alt="安装路径" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg07.png" style="zoom:67%;">
 
 <p>这里处理器数量根据自己CPU情况来定</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg08.png" alt="处理器核数量" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg08.png" style="zoom:67%;">
 
 <p>运行内存默认为1G，这里因为我是8G运行内存所以我选择2G,根据自己机器情况来定</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg09.png" alt="内存" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg09.png" style="zoom:67%;">
 
 <p>网络类型这里我们选择桥连接,桥连接也就是直接用我们主机上的网络,并不是Linux重新建立网络连接</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg10.png" alt="网络类型" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg10.png" style="zoom:67%;">
 
 <p>接下来的两步默认即可,然后选择创建新虚拟磁盘</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg11.png" alt="创建虚拟磁盘" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg11.png" style="zoom:67%;">
 
 <p>默认大小20G,可以先不改,后续需要可以再加,选择将虚拟磁盘拆分成多个文件</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg12.png" alt="磁盘容量" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg12.png" style="zoom:67%;">
 
 <p>然后一直点下一步最后虚拟机创建完成</p>
 <p>打开虚拟机设置,因为我们在上面选择了稍后安装操作系统,所以我们现在需要选择CentOS7的镜像</p>
 <p>选择CD/DVD(IDE) 在右侧单击预览找到我们在第一步下载的CentOs7镜像文件</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg13.png" alt="选择镜像" style="zoom:50%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg13.png" style="zoom:67%;">
 
 
 
 <p>安装好后运行虚拟机，直接选择第一个安装CentOS7,如果选择第二个的话会选检测你的环境,可能会出现一些没必要的报错</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg14.png" alt="安装CentOS7" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg14.png" style="zoom:67%;">
 
 <p>选择第一个后等待它安装,如果没出意外安装好后会出现界面</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg15.png" alt="安装CentOS7" style="zoom:67%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg15.png" style="zoom:67%;">
 
 <p>语言我们选择简体中文,点击下一步后进入安装信息界面,如果出现这种黄色感叹号,只要我们点进去然后再点左上角完成就没事了</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg16.png" alt="安装CentOS" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg16.png" style="zoom:67%;">
 
 
 
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg17.png" alt="安装CentOS7" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg17.png" style="zoom:67%;">
 
 <p>然后点击开始安装,在安装的时候可以设置Root密码,否则用默认的不怎么舒服</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg18.png" alt="安装CentOS7" style="zoom:80%;">
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg18.png" style="zoom:67%;">
 
 <p>等待它安装,安装好后重启</p>
-<h3 id="一-安装redis"><a href="#一-安装redis" class="headerlink" title="一.安装redis"></a>一.安装redis</h3><p><strong>1.下载redis</strong></p>
-<p>​    既然要安装redis那么我们得有redis,所以进入redis官网下载</p>
-<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/Hexo\source\_posts\img\redis\redisImg04.png" alt="redis官网" style="zoom:80%;">     
+<h3 id="一-安装redis"><a href="#一-安装redis" class="headerlink" title="一.安装redis"></a>一.安装redis</h3><p><strong>1.准备工作</strong></p>
+<h4 id="第一步-首先安装gcc依赖"><a href="#第一步-首先安装gcc依赖" class="headerlink" title="第一步:首先安装gcc依赖"></a>第一步:首先安装gcc依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.准备工作</strong></p>
-<p>​    首先安装gcc依赖</p>
-<p>​            </p>
+<h4 id="第二步-下载redis安装包"><a href="#第二步-下载redis安装包" class="headerlink" title="第二步:下载redis安装包"></a>第二步:下载redis安装包</h4><p>这步记得先进目录再下载介意进到 usr/local 目录下安装,这里注意一下,如果这种方式安装不了那就进到redis官网下载安装包,然后使用Xftp上传到Linux</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.4.tar.gz</span><br></pre></td></tr></table></figure>
 
+<h4 id="第三步-解压压缩包"><a href="#第三步-解压压缩包" class="headerlink" title="第三步: 解压压缩包"></a>第三步: 解压压缩包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-5.0.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="第四步-为了后续操作方便也可以将文件名改名"><a href="#第四步-为了后续操作方便也可以将文件名改名" class="headerlink" title="第四步:为了后续操作方便也可以将文件名改名"></a>第四步:为了后续操作方便也可以将文件名改名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv redis-5.0.4 redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="第五步：进入到目录然后直接编译"><a href="#第五步：进入到目录然后直接编译" class="headerlink" title="第五步：进入到目录然后直接编译"></a>第五步：进入到目录然后直接编译</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make MALLOC=libc</span><br></pre></td></tr></table></figure>
+
+<h4 id="第六步：编译好后进入到src目录下将src加到-usr-local-bin-目录"><a href="#第六步：编译好后进入到src目录下将src加到-usr-local-bin-目录" class="headerlink" title="第六步：编译好后进入到src目录下将src加到 /usr/local/bin 目录"></a>第六步：编译好后进入到src目录下将src加到 /usr/local/bin 目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis/src</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h4 id="第七步：测试是否安装成功"><a href="#第七步：测试是否安装成功" class="headerlink" title="第七步：测试是否安装成功"></a>第七步：测试是否安装成功</h4><p>进入到/usr/local/redis/src目录执行启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server</span><br></pre></td></tr></table></figure>
+
+<p>出现如下界面说明安装成功了！</p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg19.png" style="zoom:80%;">
+
+<p>这个时候因为我们不能后台运行,所以会一直在这个界面,先按Ctrl+C退出</p>
+<h4 id="第八步：配置redis后台运行"><a href="#第八步：配置redis后台运行" class="headerlink" title="第八步：配置redis后台运行"></a>第八步：配置redis后台运行</h4><p>进入到/usr/local/redis/目录,打开redis.conf文件</p>
+<p><code>vi redis.conf</code></p>
+<p>按/打开搜索，然后搜索 daemonize按 i 编辑将daemonize后面的no改成yes,改好后按Esc退出编辑,按住Ctrl+/然后输入wq保存退出.</p>
+<p>这个时候我们的后台运行配置就完成了！</p>
+<p>再次回到/usr/local/redis/src目录，不过这次运行redis有所不同,这次我们得指定配置文件运行</p>
+<p><code>./redis-server /usr/local/redis/redis.conf</code></p>
+<p>指定我们刚刚配置的配置文件运行，这样我们就能后台运行了！</p>
+<h4 id="第九步：配置远程连接"><a href="#第九步：配置远程连接" class="headerlink" title="第九步：配置远程连接"></a>第九步：配置远程连接</h4><p>因为redis默认只能本地连接数据库,想要在其他计算机比如我们的主计算机windows上运行的话得更改运行其他IP连接</p>
+<p>再次打开redis.conf,按照上面教你们的方法搜索bind 127.0.0.1,然后将127.0.0.1更改为0.0.0.0或者在前面加个#号注释掉也行</p>
+<p>redis单机版的安装基本到这就完成了,再提一下,如果想要停止redis服务,执行如下命令</p>
+<p><code>./redis-cli  shutdown</code></p>
+<h2 id="二-搭建集群"><a href="#二-搭建集群" class="headerlink" title="二.搭建集群"></a>二.搭建集群</h2><h4 id="第一步：准备6份redis"><a href="#第一步：准备6份redis" class="headerlink" title="第一步：准备6份redis"></a>第一步：准备6份redis</h4><p>在/usr/local/目录下创建redis-cluster文件夹用于存放redis文件夹</p>
+<p>将redis文件夹复制到redis-cluster中,复制6份</p>
+<p>找到我们编译好的bin文件夹,如果是按照我的步骤来的话bin文件夹应该是在/usr/local/bin，这个目录,然后创将bin文件夹下所有文件复制到redis-cluter中，复制六份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cp -r bin redis-cluster/redis01</span><br><span class="line">cp -r bin redis-cluster/redis02</span><br><span class="line">cp -r bin redis-cluster/redis03</span><br><span class="line">cp -r bin redis-cluster/redis04</span><br><span class="line">cp -r bin redis-cluster/redis05</span><br><span class="line">cp -r bin redis-cluster/redis06</span><br></pre></td></tr></table></figure>
+
+<p>复制好之后进到redis目录下,将redis.conf文件拷贝到我们刚刚创建的六个文件夹(redis1~6)，如果有 <code>dump.rdb</code> 这个文件的话删掉这个文件 <code>rm -f dump.rdb</code> </p>
+<p>这些做完之后我们进入到redis01文件夹,编辑redis.conf文件<code>vi redis.conf</code></p>
+<p>首先将这个文件的cluster中的cluster-enable yes将它的注释解开,只有这样它才能支持集群</p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg20.png" style="zoom:67%;">
+
+<p>然后找到port 6379，将它改成9624,然后其他五个文件夹重复以上操作,分别改成9624~9629</p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg21.png" style="zoom:67%;">
+
+<h3 id="第二步：启动redis集群"><a href="#第二步：启动redis集群" class="headerlink" title="第二步：启动redis集群"></a>第二步：启动redis集群</h3><p>经过不懈努力我们终于到最重要的一步了,因为启动集群需要重复六次几乎相同的操作,所以在这做成脚本,否则以后我们每次启动都要重复六次相同的操作有点累人.</p>
+<p>进到集群目录,/usr/local/redis-cluster,在目录下直接编辑脚本<code>vi start-cluster</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> redis01</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> redis02</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> redis03</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> redis04</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> redis05</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> redis06</span><br><span class="line">./redis-server redis.conf</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+<p>将以上内容编辑到创建的文件中,可以先写一条,然后再按v选中写好的一条,再按y复制,然后换行再按p粘贴,重复五次就好了(记得改redis后面的数字,01~06),写好之后保存退出</p>
+<p>然后ls查看是不是多了一个start-cluster的文件,但是这个时候是灰色的</p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg22.png" style="zoom:80%;">
+
+<p>我们得给它权限,让它变成可执行文件,执行<code>chmod u+x start-cluster.sh</code></p>
+<p>这个时候再看,是不是变成绿色了，现在我们直接执行脚本，<code>./start-cluster.sh</code></p>
+<p>执行完后查看是否启动成功,执行<code>ps aux|grep redis</code> </p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg23.png" style="zoom:80%;">
+
+<h3 id="第三步：分配槽"><a href="#第三步：分配槽" class="headerlink" title="第三步：分配槽"></a>第三步：分配槽</h3><p>到这一步就几乎已经装好了,只要创建集群然后让它自动分配槽就行了</p>
+<p>执行如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli --cluster create 127.0.0.1:9624 127.0.0.1:9625 127.0.0.1:9626 127.0.0.1:9627 127.0.0.1:9628 127.0.0.1:9629 --cluster-replicas 1</span><br></pre></td></tr></table></figure>
+
+<p>后面的1表示有一台备份机器,执行完后输入yes然后就行了</p>
+<img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg24.png" style="zoom:80%;">
+
+
+
+<h3 id="终于把redis集群搭好了-感谢您耐心的看到这里-谢谢！"><a href="#终于把redis集群搭好了-感谢您耐心的看到这里-谢谢！" class="headerlink" title="终于把redis集群搭好了,感谢您耐心的看到这里,谢谢！"></a>终于把redis集群搭好了,感谢您耐心的看到这里,谢谢！</h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-01T18:11:11.264Z" itemprop="dateUpdated">2019-10-02 02:11:11</time>
+    Last updated: <time datetime="2019-10-24T16:01:41.923Z" itemprop="dateUpdated">2019-10-25 00:01:41</time>
 </span>
 
 
@@ -336,7 +405,15 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/22/hello-world/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：Hello World
+        </h4>
+      </a>
+    </div>
   
 
   
