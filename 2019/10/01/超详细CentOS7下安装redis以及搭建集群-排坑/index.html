@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg22.png">
 <meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg23.png">
 <meta property="og:image" content="http://yuntian.design/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg24.png">
-<meta property="og:updated_time" content="2019-10-24T16:01:41.923Z">
+<meta property="og:updated_time" content="2019-10-24T16:19:31.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="超详细CentOs7下安装redis以及搭建集群(排坑)">
 <meta name="twitter:description" content="本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑">
@@ -199,7 +199,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装CentOS7"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.安装CentOS7</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装redis"><span class="post-toc-number">2.</span> <span class="post-toc-text">一.安装redis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步-首先安装gcc依赖"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">第一步:首先安装gcc依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二步-下载redis安装包"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第二步:下载redis安装包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三步-解压压缩包"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第三步: 解压压缩包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第四步-为了后续操作方便也可以将文件名改名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">第四步:为了后续操作方便也可以将文件名改名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第五步：进入到目录然后直接编译"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">第五步：进入到目录然后直接编译</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第六步：编译好后进入到src目录下将src加到-usr-local-bin-目录"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">第六步：编译好后进入到src目录下将src加到 /usr/local/bin 目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第七步：测试是否安装成功"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">第七步：测试是否安装成功</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第八步：配置redis后台运行"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">第八步：配置redis后台运行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第九步：配置远程连接"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">第九步：配置远程连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-搭建集群"><span class="post-toc-number"></span> <span class="post-toc-text">二.搭建集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步：准备6份redis"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">第一步：准备6份redis</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步：启动redis集群"><span class="post-toc-number">1.</span> <span class="post-toc-text">第二步：启动redis集群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步：分配槽"><span class="post-toc-number">2.</span> <span class="post-toc-text">第三步：分配槽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#终于把redis集群搭好了-感谢您耐心的看到这里-谢谢！"><span class="post-toc-number">3.</span> <span class="post-toc-text">终于把redis集群搭好了,感谢您耐心的看到这里,谢谢！</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-安装CentOS7"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.安装CentOS7</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-安装redis"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.安装redis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步-首先安装gcc依赖"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">第一步:首先安装gcc依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二步-下载redis安装包"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第二步:下载redis安装包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三步-解压压缩包"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第三步: 解压压缩包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第四步-为了后续操作方便也可以将文件名改名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">第四步:为了后续操作方便也可以将文件名改名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第五步：进入到目录然后直接编译"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">第五步：进入到目录然后直接编译</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第六步：编译好后进入到src目录下将src加到-usr-local-bin-目录"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">第六步：编译好后进入到src目录下将src加到 /usr/local/bin 目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第七步：测试是否安装成功"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">第七步：测试是否安装成功</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第八步：配置redis后台运行"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">第八步：配置redis后台运行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第九步：配置远程连接"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">第九步：配置远程连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三-搭建集群"><span class="post-toc-number"></span> <span class="post-toc-text">三.搭建集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一步：准备6份redis"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">第一步：准备6份redis</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步：启动redis集群"><span class="post-toc-number">1.</span> <span class="post-toc-text">第二步：启动redis集群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步：分配槽"><span class="post-toc-number">2.</span> <span class="post-toc-text">第三步：分配槽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#终于把redis集群搭好了-感谢您耐心的看到这里-谢谢！"><span class="post-toc-number">3.</span> <span class="post-toc-text">终于把redis集群搭好了,感谢您耐心的看到这里,谢谢！</span></a></li></ol>
         </nav>
     </aside>
    
@@ -298,7 +298,7 @@
 <img src="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/redisImg18.png" style="zoom:67%;">
 
 <p>等待它安装,安装好后重启</p>
-<h3 id="一-安装redis"><a href="#一-安装redis" class="headerlink" title="一.安装redis"></a>一.安装redis</h3><p><strong>1.准备工作</strong></p>
+<h3 id="二-安装redis"><a href="#二-安装redis" class="headerlink" title="二.安装redis"></a>二.安装redis</h3><p><strong>1.准备工作</strong></p>
 <h4 id="第一步-首先安装gcc依赖"><a href="#第一步-首先安装gcc依赖" class="headerlink" title="第一步:首先安装gcc依赖"></a>第一步:首先安装gcc依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br></pre></td></tr></table></figure>
 
 <h4 id="第二步-下载redis安装包"><a href="#第二步-下载redis安装包" class="headerlink" title="第二步:下载redis安装包"></a>第二步:下载redis安装包</h4><p>这步记得先进目录再下载介意进到 usr/local 目录下安装,这里注意一下,如果这种方式安装不了那就进到redis官网下载安装包,然后使用Xftp上传到Linux</p>
@@ -334,7 +334,7 @@
 <p>再次打开redis.conf,按照上面教你们的方法搜索bind 127.0.0.1,然后将127.0.0.1更改为0.0.0.0或者在前面加个#号注释掉也行</p>
 <p>redis单机版的安装基本到这就完成了,再提一下,如果想要停止redis服务,执行如下命令</p>
 <p><code>./redis-cli  shutdown</code></p>
-<h2 id="二-搭建集群"><a href="#二-搭建集群" class="headerlink" title="二.搭建集群"></a>二.搭建集群</h2><h4 id="第一步：准备6份redis"><a href="#第一步：准备6份redis" class="headerlink" title="第一步：准备6份redis"></a>第一步：准备6份redis</h4><p>在/usr/local/目录下创建redis-cluster文件夹用于存放redis文件夹</p>
+<h2 id="三-搭建集群"><a href="#三-搭建集群" class="headerlink" title="三.搭建集群"></a>三.搭建集群</h2><h4 id="第一步：准备6份redis"><a href="#第一步：准备6份redis" class="headerlink" title="第一步：准备6份redis"></a>第一步：准备6份redis</h4><p>在/usr/local/目录下创建redis-cluster文件夹用于存放redis文件夹</p>
 <p>将redis文件夹复制到redis-cluster中,复制6份</p>
 <p>找到我们编译好的bin文件夹,如果是按照我的步骤来的话bin文件夹应该是在/usr/local/bin，这个目录,然后创将bin文件夹下所有文件复制到redis-cluter中，复制六份</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cp -r bin redis-cluster/redis01</span><br><span class="line">cp -r bin redis-cluster/redis02</span><br><span class="line">cp -r bin redis-cluster/redis03</span><br><span class="line">cp -r bin redis-cluster/redis04</span><br><span class="line">cp -r bin redis-cluster/redis05</span><br><span class="line">cp -r bin redis-cluster/redis06</span><br></pre></td></tr></table></figure>
@@ -376,7 +376,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-24T16:01:41.923Z" itemprop="dateUpdated">2019-10-25 00:01:41</time>
+    Last updated: <time datetime="2019-10-24T16:19:31.068Z" itemprop="dateUpdated">2019-10-25 00:19:31</time>
 </span>
 
 
@@ -405,15 +405,7 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/10/22/hello-world/" id="post-prev" class="post-nav-link">
-        <h4 class="title" >
-          上一篇：Hello World
-        </h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
