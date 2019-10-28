@@ -6,7 +6,7 @@
     
     
     
-    <title>归档: 2019/10 | 云霄阁</title>
+    <title>RabbitMQ安装好后无法访问页面 | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,13 +39,22 @@
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yuntian.design/archives/2019/10/index.html">
+    <meta name="description" content="有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯...无法访问此页面】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ安装好后无法访问页面">
+<meta property="og:url" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/index.html">
 <meta property="og:site_name" content="云霄阁">
+<meta property="og:description" content="有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯...无法访问此页面】">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitError.jpg">
+<meta property="og:image" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/lookHiddenFile.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitAddUser.png">
+<meta property="og:image" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitMQAddUser.png">
+<meta property="og:updated_time" content="2019-10-28T14:44:33.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云霄阁">
+<meta name="twitter:title" content="RabbitMQ安装好后无法访问页面">
+<meta name="twitter:description" content="有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯...无法访问此页面】">
+<meta name="twitter:image" content="http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitError.jpg">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -58,7 +67,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"   >
+    <aside id="menu"  class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -86,7 +95,7 @@
                   </a>
               </li>
             
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/archives"  >
                     <i class="icon icon-lg icon-archives"></i>
                     <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
@@ -141,14 +150,14 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">归档</div>
+        <div class="flex-col header-title ellipsis">RabbitMQ安装好后无法访问页面</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     
     
     <div class="container fade-scale">
@@ -158,7 +167,6 @@
             </h1>
             <h5 class="subtitle">
                 
-                    <h1 class="archivestitle">醉笑三千席不诉离别意</h1>
                 
             </h5>
         </div>
@@ -166,104 +174,130 @@
 
 </header>
 
-<div class="container body-wrap fade">
-    
 
+<div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-删除DB"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.删除DB</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-命令打开管理界面"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.命令打开管理界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进入管理界面"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.进入管理界面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-创建新账号"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.创建新账号</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-解决RabbitMQ安装好后无法访问页面问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">RabbitMQ安装好后无法访问页面</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2019-10-28 00:00:00" datetime="2019-10-27T16:00:00.000Z"  itemprop="datePublished">2019-10-28</time>
+
+            <br id="mybreak"/>
             
-            <h3 class="archive-separator">
-                <i class="icon icon-lg icon-folder-o"></i>&nbsp;&nbsp;
-                2019
-            </h3>
-            <div class="waterfall">
-    
+<script>
+	mybreak.style="display:none";
+</script>
 
-        <article class="archive-article" onclick="location.href='/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          10-28
-      </time>
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            早知如此相遇不如不遇,醉笑三千席不诉离别意
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯…无法访问此页面】</p>
+<a id="more"></a>
+
+<p>相信有些朋友安装好RabbitMQ后还是会遇到如下情况</p>
+<img src="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitError.jpg" style="zoom:67%;">
+
+<p>我这就提供解决方案</p>
+<h3 id="一-删除DB"><a href="#一-删除DB" class="headerlink" title="一.删除DB"></a>一.删除DB</h3><p>首先我们先将C:\Users\你的用户名\AppData\Roaming\RabbitMQ\db 这个DB文件夹下的内容全部删除,这里要注意一下,因为AppData是隐藏文件,所以得先将查看隐藏文件打开</p>
+<img src="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/lookHiddenFile.png" style="zoom:67%;">
+
+<p>我们删掉DB后重新运行安装程序,重新安装一遍就好了,不用删除原来的RabbitMQ,直接运行安装程序。</p>
+<h3 id="二-命令打开管理界面"><a href="#二-命令打开管理界面" class="headerlink" title="二.命令打开管理界面"></a>二.命令打开管理界面</h3><h4 id="1-进入管理界面"><a href="#1-进入管理界面" class="headerlink" title="1.进入管理界面"></a>1.进入管理界面</h4><p>### </p>
+<p>如果前两次操作做完后还是无法打开页面还是出现页面访问不了的情况,那么使用CMD进入到RabbitMQs目录下的sbin文件夹,执行如下命令</p>
+<p><code>rabbitmq-plugins enable rabbitmq_management</code></p>
+<p>执行完后才访问页面,应该就好啦,但是这种方式只能提供我们访问一次页面,如果下次再次访问可能就访问不了了,这是因为rabbitMQ只开启了guest访问时是不能够通过<strong>IP+端口</strong> 方式访问的,所以得创建一个新的账号</p>
+<h4 id="2-创建新账号"><a href="#2-创建新账号" class="headerlink" title="2.创建新账号"></a>2.创建新账号</h4><p>我们先使用默认的账号密码登录管理界面，(默认账号密码就是guest),登录好后出现管理界面,进入到<strong>Admin</strong>选项,点击<strong>Add a user</strong>选项</p>
+<img src="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitAddUser.png" style="zoom:67%;">
+
+<p>点击后会展开一个添加用户界面,按照图上提示填好内容后点击<strong>Add User</strong>就好啦</p>
+<img src="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/RabbitMQAddUser.png" style="zoom:67%;">
+
+
+
+<p><strong>早知如此相遇不如不遇,醉笑三千席不诉离别意</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-10-28T14:44:33.508Z" itemprop="dateUpdated">2019-10-28 22:44:33</time>
+</span>
+
+
+        
+        原文链接：<a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" target="_blank" rel="external">http://yuntian.design/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/</a>
+        
     </div>
-    <div class="archive-article-inner">
-      
+    <footer>
+        <div onclick="location.href='http://yuntian.design'">
+            <img src="/img/avatar.jpeg" alt="yun tian">
+            <a>yun tian</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/">RabbitMQ安装好后无法访问页面</a>
-    </h3>
-  
+        <div class="post-footer">
+            
+
+            
 
 
-
-      <br/>
-      
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/10/27/后端程序员必备的Linux基础知识/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          10-27
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/27/后端程序员必备的Linux基础知识/">后端程序员必备知识(Linux)</a>
-    </h3>
-  
-
-
-
-      <br/>
-      
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          10-01
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/">超详细CentOs7下安装redis以及搭建集群(排坑)</a>
-    </h3>
-  
-
-
-
-      <br/>
-      
-    </div>
-  </article>
-
-    
+        </div>
     </div>
 
     
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/27/后端程序员必备的Linux基础知识/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：后端程序员必备知识(Linux)">下一篇：后端程序员必备知识(Linux)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+
+
+</article>
+
 </div>
 
         <footer class="footer">
