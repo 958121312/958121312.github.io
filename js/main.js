@@ -673,16 +673,16 @@
 
 		e.preventDefault()
 	}
-
-	searchIco.addEventListener(even, function() {
-		searchWrap.classList.toggle('in')
-		keyInput.value = ''
-		if (searchWrap.classList.contains('in')) {
-			keyInput.focus()
-		} else {
-			keyInput.blur()
-		}
-	})
+//关闭搜索
+	// searchIco.addEventListener(even, function() {
+	// 	searchWrap.classList.toggle('in')
+	// 	keyInput.value = ''
+	// 	if (searchWrap.classList.contains('in')) {
+	// 		keyInput.focus()
+	// 	} else {
+	// 		keyInput.blur()
+	// 	}
+	// })
 
 	back.addEventListener(even, function() {
 		searchWrap.classList.remove('in')
