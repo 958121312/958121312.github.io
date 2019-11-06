@@ -6,7 +6,7 @@
     
     
     
-    <title>No title | 云霄阁</title>
+    <title>深入了解HashMap容量为什么是2的幂次方 | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,17 +39,17 @@
 
 
     
-    <meta name="description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+    <meta name="description" content="深入解读JDK1.8的HashMap源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
-<meta property="og:url" content="http://yuntian.design/2019/11/06/深入了解HashMap容量为什么是2的幂次方/index.html">
+<meta property="og:title" content="深入了解HashMap容量为什么是2的幂次方">
+<meta property="og:url" content="http://yuntian.design/2019/08/28/深入了解HashMap容量为什么是2的幂次方/index.html">
 <meta property="og:site_name" content="云霄阁">
-<meta property="og:description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+<meta property="og:description" content="深入解读JDK1.8的HashMap源码">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-06T13:21:17.104Z">
+<meta property="og:updated_time" content="2019-11-06T13:25:20.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+<meta name="twitter:title" content="深入了解HashMap容量为什么是2的幂次方">
+<meta name="twitter:description" content="深入解读JDK1.8的HashMap源码">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -145,7 +145,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">深入了解HashMap容量为什么是2的幂次方</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
@@ -175,7 +175,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#description-深入解读JDK1-8的HashMap源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">description:深入解读JDK1.8的HashMap源码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-HashMap的数据结构"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一.HashMap的数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-Hash算法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二.Hash算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-JDK1-7中的hash算法"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.JDK1.7中的hash算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-JDK1-8中的hash算法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.JDK1.8中的hash算法</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-HashMap的数据结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.HashMap的数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-Hash算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.Hash算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-JDK1-7中的hash算法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.JDK1.7中的hash算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-JDK1-8中的hash算法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.JDK1.8中的hash算法</span></a></li></ol></li></ol>
         </nav>
     </aside>
    
@@ -183,11 +183,11 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"></h1>
+        <h1 class="post-card-title">深入了解HashMap容量为什么是2的幂次方</h1>
         <div class="post-meta">
             <i class="icon icon-lg icon-calendar-o"></i>
             发表于
-            <time class="post-time" title="2019-11-06 11:40:53" datetime="2019-11-06T03:40:53.017Z"  itemprop="datePublished">2019-11-06</time>
+            <time class="post-time" title="2019-08-28 00:00:00" datetime="2019-08-27T16:00:00.000Z"  itemprop="datePublished">2019-08-28</time>
 
             <br id="mybreak"/>
             
@@ -209,9 +209,7 @@
             早知如此相遇不如不遇,醉笑三千席不诉离别意
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <hr>
-<p>title:深入了解HashMap容量为什么是2的幂次方<br>date:2019-8-28</p>
-<h2 id="description-深入解读JDK1-8的HashMap源码"><a href="#description-深入解读JDK1-8的HashMap源码" class="headerlink" title="description:深入解读JDK1.8的HashMap源码"></a>description:深入解读JDK1.8的HashMap源码</h2><p>本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高</p>
+            <p>本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高</p>
 <a id="more"></a>
 
 <h3 id="一-HashMap的数据结构"><a href="#一-HashMap的数据结构" class="headerlink" title="一.HashMap的数据结构"></a>一.HashMap的数据结构</h3><p>首先要解读HashMap的源码,那么首先得知道它的数据结构,在JDK1.8之前HashMap的数据结构是数组+链表实现的,但是在JDK1.8后为了防止链表长度太长引起各种问题后,所以链表中的数量到达阈值的时候会转为红黑树<strong>(默认阈值是8)</strong> ，具体可以看下面源码</p>
@@ -247,12 +245,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-11-06T13:21:17.104Z" itemprop="dateUpdated">2019-11-06 21:21:17</time>
+    Last updated: <time datetime="2019-11-06T13:25:20.136Z" itemprop="dateUpdated">2019-11-06 21:25:20</time>
 </span>
 
 
         
-        原文链接：<a href="/2019/11/06/深入了解HashMap容量为什么是2的幂次方/" target="_blank" rel="external">http://yuntian.design/2019/11/06/深入了解HashMap容量为什么是2的幂次方/</a>
+        原文链接：<a href="/2019/08/28/深入了解HashMap容量为什么是2的幂次方/" target="_blank" rel="external">http://yuntian.design/2019/08/28/深入了解HashMap容量为什么是2的幂次方/</a>
         
     </div>
     <footer>
@@ -276,15 +274,17 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
   
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" id="post-next" class="post-nav-link">
-        <h4 class="title" data-hover="下一篇：RabbitMQ安装好后无法访问页面">下一篇：RabbitMQ安装好后无法访问页面</h4>
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：超详细CentOs7下安装redis以及搭建集群(排坑)
+        </h4>
       </a>
     </div>
+  
+
   
 </nav>
 

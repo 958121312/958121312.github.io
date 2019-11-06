@@ -6,7 +6,7 @@
     
     
     
-    <title>归档: 2019/11 | 云霄阁</title>
+    <title>深入了解HashMap容量为什么是2的幂次方 | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,13 +39,17 @@
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yuntian.design/archives/2019/11/index.html">
+    <meta name="description" content="深入解读JDK1.8的HashMap源码">
+<meta property="og:type" content="website">
+<meta property="og:title" content="深入了解HashMap容量为什么是2的幂次方">
+<meta property="og:url" content="http://yuntian.design/categories/技术分享/深入了解HashMap容量为什么是2的幂次方.html">
 <meta property="og:site_name" content="云霄阁">
+<meta property="og:description" content="深入解读JDK1.8的HashMap源码">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-06T13:25:20.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云霄阁">
+<meta name="twitter:title" content="深入了解HashMap容量为什么是2的幂次方">
+<meta name="twitter:description" content="深入解读JDK1.8的HashMap源码">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -58,7 +62,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"   >
+    <aside id="menu"  class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -86,14 +90,14 @@
                   </a>
               </li>
             
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/archives"  >
                     <i class="icon icon-lg icon-archives"></i>
                     <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
                   </a>
               </li>
             
-              <li class="waves-block waves-effect">
+              <li class="waves-block waves-effect active">
                   <a href="/categories"  >
                     <i class="icon icon-lg icon-th-list"></i>
                     <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
@@ -141,14 +145,14 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">归档</div>
+        <div class="flex-col header-title ellipsis">深入了解HashMap容量为什么是2的幂次方</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header page-header">
     
     
     <div class="container fade-scale">
@@ -158,7 +162,7 @@
             </h1>
             <h5 class="subtitle">
                 
-                    <h1 class="archivestitle">醉笑三千席不诉离别意</h1>
+                    深入解读JDK1.8的HashMap源码
                 
             </h5>
         </div>
@@ -166,48 +170,34 @@
 
 </header>
 
-<div class="container body-wrap fade">
+
+<div class="container body-wrap">
+    <article class="page-article fade" itemprop="blogPage">
+        
+            <div class="card page-about-me flex-row">
+                <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpeg"></a>
+                <div class="content flex-col">
+                    <p><strong>yun tian</strong></p>
+                    <p><em></em></p>
+                    <p>业精于勤荒于嬉，行成于思毁于随</p>
+                </div>
+            </div>
+        
+
+        
+
+
+        
     
 
     
-            
-            <h3 class="archive-separator">
-                <i class="icon icon-lg icon-folder-o"></i>&nbsp;&nbsp;
-                2019
-            </h3>
-            <div class="waterfall">
-    
-
-        <article class="archive-article" onclick="location.href='/2019/11/06/深入了解HashMap容量为什么是2的幂次方/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          11-06
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/11/06/深入了解HashMap容量为什么是2的幂次方/">No title</a>
-    </h3>
-  
-
-
-
-      <br/>
-      
-    </div>
-  </article>
 
     
-    </div>
 
+
+    </article>
     
+
 </div>
 
         <footer class="footer">
