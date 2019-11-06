@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | 云霄阁</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content>
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://yuntian.design/2019/11/06/深入了解HashMap容量为什么是2的幂次方/index.html">
+<meta property="og:site_name" content="云霄阁">
+<meta property="og:description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-06T13:21:17.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="title:深入了解HashMap容量为什么是2的幂次方date:2019-8-28 description:深入解读JDK1.8的HashMap源码本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高">
+    
+    <link rel="shortcut icon" href="/img/yun.png">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">yun tian</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/958121312@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/958121312" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#description-深入解读JDK1-8的HashMap源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">description:深入解读JDK1.8的HashMap源码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-HashMap的数据结构"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一.HashMap的数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-Hash算法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二.Hash算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-JDK1-7中的hash算法"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.JDK1.7中的hash算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-JDK1-8中的hash算法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.JDK1.8中的hash算法</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-深入了解HashMap容量为什么是2的幂次方"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2019-11-06 11:40:53" datetime="2019-11-06T03:40:53.017Z"  itemprop="datePublished">2019-11-06</time>
+
+            <br id="mybreak"/>
+            
+<script>
+	mybreak.style="display:none";
+</script>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            早知如此相遇不如不遇,醉笑三千席不诉离别意
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<p>title:深入了解HashMap容量为什么是2的幂次方<br>date:2019-8-28</p>
+<h2 id="description-深入解读JDK1-8的HashMap源码"><a href="#description-深入解读JDK1-8的HashMap源码" class="headerlink" title="description:深入解读JDK1.8的HashMap源码"></a>description:深入解读JDK1.8的HashMap源码</h2><p>本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高</p>
+<a id="more"></a>
+
+<h3 id="一-HashMap的数据结构"><a href="#一-HashMap的数据结构" class="headerlink" title="一.HashMap的数据结构"></a>一.HashMap的数据结构</h3><p>首先要解读HashMap的源码,那么首先得知道它的数据结构,在JDK1.8之前HashMap的数据结构是数组+链表实现的,但是在JDK1.8后为了防止链表长度太长引起各种问题后,所以链表中的数量到达阈值的时候会转为红黑树<strong>(默认阈值是8)</strong> ，具体可以看下面源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** * The load factor used when none specified in constructor. */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"><span class="comment">/** * The bin count threshold for using a tree rather than list for a * bin.  Bins are converted to trees when adding an element to a * bin with at least this many nodes. The value must be greater * than 2 and should be at least 8 to mesh with assumptions in * tree removal about conversion back to plain bins upon * shrinkage. */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-Hash算法"><a href="#二-Hash算法" class="headerlink" title="二.Hash算法"></a>二.Hash算法</h3><p>通过上面我们可以知道HashMap是通过数组+链表存储数据的,那么HashMap又是如何来计算元素的位置呢</p>
+<p> 我们可以看到在HashMap中要找到某个元素，需要根据Key的<strong>Hash值</strong>来求得对应数组中的位置。如何计算这个位置就是<strong>Hash算法</strong>。前面说过HashMap的数据结构是数组+链表 ,那么我们肯定希望链表里的元素少一点,因为每往链表里添加一个元素就意味着Hash算法得出来的值相同了,也就是所谓的Hash碰撞,所以我们希望HashMap元素的位置尽量分布均匀一点,尽量的每个位置上的元素只有一个,这样的话我们使用Key得到元素的位置的时候就不需要再去遍历链表了。</p>
+<p>所以我们为了首先想到的是对Hash值进行取模运算,这样的话分布也还算均匀,但是我们都知道取模运算实际上就是计算机对那个数不停的做除法,直到除不了的时候再返回剩下的数给我们,那么这个过程实际上性能还是蛮低的,那么我们来看看Java是怎么做的</p>
+<p><strong>我会分别给大家看一下JDK1.7和JDK1.8中的hash算法</strong></p>
+<h4 id="1-JDK1-7中的hash算法"><a href="#1-JDK1-7中的hash算法" class="headerlink" title="1.JDK1.7中的hash算法"></a>1.JDK1.7中的hash算法</h4><p>首先是JDK1.7中的Hash算法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123; </span><br><span class="line">   <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面代码中我们可以看见,Java在JDK1.7的时候是先将<strong>Hash值与数组长度-1进行一个与运算</strong>,虽然代码只有一行,但是这就是高手写代码(一行搞定)开个玩笑,不过JDK1.8的HashMap作者也不知道是谁,事了拂衣去，深藏身与名嘛</p>
+<p>那么这行代码到底干了什么事呢,在说它干了什么事之前我们要先知道与运算到底是个什么东西,如果懂的朋友可以跳过这段</p>
+<p>我们都知道计算机中0代表无1代表有,也就是说0代表false/1代表了true,如果知道这一点那么就容易了,说白了与运算就是对二进制进行并且判断,如果两个有一个为0那么返回0如果两个都为1则返回1,比如</p>
+<p><code>4&amp;7</code> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00000100</span> 与 <span class="number">00000111</span></span><br></pre></td></tr></table></figure>
+
+<p>综上所述,它们结果就是 <code>00000100</code> 所以还是4,大家都懂与运算是干什么了吧</p>
+<p>那么为什么说只有HashMap 的初始容量为2的幂次方时效率才最高呢,通俗易懂的说就是,二进制的计算规则是只要往左移一位相当于2^n+1<strong>注意:n是从0开始的,也就是如果第一位是1那么就是2^0也就是等于1</strong>,比如00000001如果往左移一位00000010也就是2^1等于2,明白了这个之后我们可以看出如果说我们的长度不是2的n次方,那么长度-1也就变成了偶数,如果是偶数的话,我们是不是第一位也就永远不可能为1呢,所以当进行与运算的时候就增加了碰撞的几率,hash碰撞的几率增加了那么我们在拿值的时候就需要遍历链表,这样一来效率就极大的降低了,并且数组中有些位置永远用不到,还浪费了空间。</p>
+<p>*<em>最后总结一下, 当数组长度为2的n次幂的时候，不同的key算得得index相同的几率较小，那么数据在数组上分布就比较均匀，也就是说碰撞的几率小，相对的，查询的时候就不用遍历某个位置上的链表，这样查询效率也就较高了。  *</em></p>
+<h4 id="2-JDK1-8中的hash算法"><a href="#2-JDK1-8中的hash算法" class="headerlink" title="2.JDK1.8中的hash算法"></a>2.JDK1.8中的hash算法</h4><p>首先我们看看Java源码是怎么写的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Computes key.hashCode() and spreads (XORs) higher bits of hash</span></span><br><span class="line"><span class="comment">     * to lower.  Because the table uses power-of-two masking, sets of</span></span><br><span class="line"><span class="comment">     * hashes that vary only in bits above the current mask will</span></span><br><span class="line"><span class="comment">     * always collide. (Among known examples are sets of Float keys</span></span><br><span class="line"><span class="comment">     * holding consecutive whole numbers in small tables.)  So we</span></span><br><span class="line"><span class="comment">     * apply a transform that spreads the impact of higher bits</span></span><br><span class="line"><span class="comment">     * downward. There is a tradeoff between speed, utility, and</span></span><br><span class="line"><span class="comment">     * quality of bit-spreading. Because many common sets of hashes</span></span><br><span class="line"><span class="comment">     * are already reasonably distributed (so don't benefit from</span></span><br><span class="line"><span class="comment">     * spreading), and because we use trees to handle large sets of</span></span><br><span class="line"><span class="comment">     * collisions in bins, we just XOR some shifted bits in the</span></span><br><span class="line"><span class="comment">     * cheapest possible way to reduce systematic lossage, as well as</span></span><br><span class="line"><span class="comment">     * to incorporate impact of the highest bits that would otherwise</span></span><br><span class="line"><span class="comment">     * never be used in index calculations because of table bounds.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h;</span><br><span class="line">        <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（1）首先获取对象的hashCode()值，然后将hashCode值右移16位，然后将右移后的值与原来的hashCode做<strong>异或</strong>运算，返回结果。（其中h&gt;&gt;&gt;16，在JDK1.8中，优化了高位运算的算法，使用了零扩展，无论正数还是负数，都在高位插入0）。</p>
+<p>（2）在putVal源码中，我们通过(n-1)&amp;hash获取该对象的键在hashmap中的位置。（其中hash的值就是（1）中获得的值）其中n表示的是hash桶数组的长度，并且该长度为2的n次方，这样(n-1)&amp;hash就等价于hash%n。因为&amp;运算的效率高于%运算。</p>
+<p><strong>所以在JDK1.8中代码虽然与JDK1.7中的代码不一样,但是原理还是相同的</strong></p>
+<p><strong>感谢您耐心的看完~</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-06T13:21:17.104Z" itemprop="dateUpdated">2019-11-06 21:21:17</time>
+</span>
+
+
+        
+        原文链接：<a href="/2019/11/06/深入了解HashMap容量为什么是2的幂次方/" target="_blank" rel="external">http://yuntian.design/2019/11/06/深入了解HashMap容量为什么是2的幂次方/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://yuntian.design'">
+            <img src="/img/avatar.jpeg" alt="yun tian">
+            <a>yun tian</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：RabbitMQ安装好后无法访问页面">下一篇：RabbitMQ安装好后无法访问页面</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2019
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://yuntian.design">yuntian.com</a>
+            <!-- <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a> -->
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license">This blog is licensed under a <a rel="license" rel="external nofollow" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+    </main>
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2019/9/25");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "yun tian");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 云霄阁 %c  © Simon Ma  http://yuntian.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
