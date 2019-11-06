@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="云霄阁">
 <meta property="og:description" content="深入解读JDK1.8的HashMap源码">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-06T13:25:20.136Z">
+<meta property="og:updated_time" content="2019-11-06T13:38:44.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入了解HashMap容量为什么是2的幂次方">
 <meta name="twitter:description" content="深入解读JDK1.8的HashMap源码">
@@ -217,7 +217,7 @@
 
 <h3 id="二-Hash算法"><a href="#二-Hash算法" class="headerlink" title="二.Hash算法"></a>二.Hash算法</h3><p>通过上面我们可以知道HashMap是通过数组+链表存储数据的,那么HashMap又是如何来计算元素的位置呢</p>
 <p> 我们可以看到在HashMap中要找到某个元素，需要根据Key的<strong>Hash值</strong>来求得对应数组中的位置。如何计算这个位置就是<strong>Hash算法</strong>。前面说过HashMap的数据结构是数组+链表 ,那么我们肯定希望链表里的元素少一点,因为每往链表里添加一个元素就意味着Hash算法得出来的值相同了,也就是所谓的Hash碰撞,所以我们希望HashMap元素的位置尽量分布均匀一点,尽量的每个位置上的元素只有一个,这样的话我们使用Key得到元素的位置的时候就不需要再去遍历链表了。</p>
-<p>所以我们为了首先想到的是对Hash值进行取模运算,这样的话分布也还算均匀,但是我们都知道取模运算实际上就是计算机对那个数不停的做除法,直到除不了的时候再返回剩下的数给我们,那么这个过程实际上性能还是蛮低的,那么我们来看看Java是怎么做的</p>
+<p>所以我们首先想到的是对Hash值进行取模运算,这样的话分布也还算均匀,但是我们都知道取模运算效率并不高,那么我们来看看Java到底是怎么做的</p>
 <p><strong>我会分别给大家看一下JDK1.7和JDK1.8中的hash算法</strong></p>
 <h4 id="1-JDK1-7中的hash算法"><a href="#1-JDK1-7中的hash算法" class="headerlink" title="1.JDK1.7中的hash算法"></a>1.JDK1.7中的hash算法</h4><p>首先是JDK1.7中的Hash算法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123; </span><br><span class="line">   <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -245,7 +245,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-11-06T13:25:20.136Z" itemprop="dateUpdated">2019-11-06 21:25:20</time>
+    Last updated: <time datetime="2019-11-06T13:38:44.037Z" itemprop="dateUpdated">2019-11-06 21:38:44</time>
 </span>
 
 
