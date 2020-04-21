@@ -6,7 +6,7 @@
     
     
     
-    <title>云霄阁</title>
+    <title>分类: 深入了解Java | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -41,7 +41,7 @@
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yuntian.design/index.html">
+<meta property="og:url" content="http://yuntian.design/categories/深入了解Java/index.html">
 <meta property="og:site_name" content="云霄阁">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
     <div class="scroll-wrap flex-col">
       <ul class="nav">
         
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/"  >
                     <i class="icon icon-lg icon-home"></i>
                     <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
@@ -93,7 +93,7 @@
                   </a>
               </li>
             
-              <li class="waves-block waves-effect">
+              <li class="waves-block waves-effect active">
                   <a href="/categories"  >
                     <i class="icon icon-lg icon-th-list"></i>
                     <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
@@ -141,26 +141,36 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">云霄阁</div>
+        <div class="flex-col header-title ellipsis">分类: 深入了解Java</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
     </div>
 </header>
-<header class="content-header index-header">
+<header class="content-header categories-header">
     
     
     <div class="container fade-scale">
         <div id="myheader">
             <h1 class="title">
-                 
-                    云霄阁
                 
             </h1>
             <h5 class="subtitle">
                 
-                    早知如此相遇不如不遇
+                    <h1 id="pagetitle" class="archivestitle"></h1>
+                    <script>
+                        if(location.href.indexOf('about')!=-1){
+                            pagetitle.textContent = '云霄阁';
+                        }else if(location.href.indexOf('tags')!=-1||location.href.indexOf('categories')!=-1){
+                            var a=location.href.substring(location.href.length-5,location.href.length-1);
+                            if(a==='tags'){
+                                pagetitle.textContent = '不积小流无以成江海';
+                            }else if(a==='ries'){
+                                pagetitle.textContent = '不积跬步无以至千里';
+                            }
+                        }
+                    </script>
                 
             </h5>
         </div>
@@ -168,125 +178,28 @@
 
 </header>
 
-<div class="container body-wrap">
-    <ul class="post-list">
+<div class="container body-wrap fade">
     
-        <li class="post-list-item fade">
-            <article id="post-解决RabbitMQ安装好后无法访问页面问题"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/">RabbitMQ安装好后无法访问页面</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-28 00:00:00" datetime="2019-10-27T16:00:00.000Z"  itemprop="datePublished">2019-10-28</time>
-
+        
+        
+        <h5 class="tag-tip">
+            <i class="icon icon-tag"></i>
+            关于
+            <span style="color:rgb(100, 100, 100)">深入了解Java</span>
+            共&nbsp;2&nbsp;篇文章</h5>
+        <div class="waterfall">
+            
+                <article class="archive-article" onclick="location.href='/2019/09/28/深入了解HashMap/'">
+    <div class="archive-article-date">
+      
+      <time class="my-post-time">
+        <i class="icon icon-lg icon-file-text-o"></i>
+        &nbsp;
+          2019-09-28
+      </time>
     </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯…无法访问此页面】</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-后端程序员必备的Linux基础知识"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/27/后端程序员必备的Linux基础知识/">后端程序员必备知识(Linux)</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-27 00:00:00" datetime="2019-10-26T16:00:00.000Z"  itemprop="datePublished">2019-10-27</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>Linux因为是开源的,所以具有较高的安全性,现在几乎所有服务器都会安装在Linux上</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/27/后端程序员必备的Linux基础知识/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-超详细CentOS7下安装redis以及搭建集群-排坑"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/">超详细CentOs7下安装redis以及搭建集群(排坑)</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-01 00:00:00" datetime="2019-09-30T16:00:00.000Z"  itemprop="datePublished">2019-10-01</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-深入了解HashMap"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
+    <div class="archive-article-inner">
+      
 
 
   
@@ -297,33 +210,22 @@
 
 
 
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-09-28 00:00:00" datetime="2019-09-27T16:00:00.000Z"  itemprop="datePublished">2019-09-28</time>
-
+      <br/>
+      
     </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章是作者学习完HashMap底层源码后的一些心得</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/09/28/深入了解HashMap/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
+  </article>
+            
+                <article class="archive-article" onclick="location.href='/2019/08/28/深入了解HashMap容量为什么是2的幂次方/'">
+    <div class="archive-article-date">
+      
+      <time class="my-post-time">
+        <i class="icon icon-lg icon-file-text-o"></i>
+        &nbsp;
+          2019-08-28
+      </time>
     </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-深入了解HashMap容量为什么是2的幂次方"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
+    <div class="archive-article-inner">
+      
 
 
   
@@ -334,33 +236,16 @@
 
 
 
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-08-28 00:00:00" datetime="2019-08-27T16:00:00.000Z"  itemprop="datePublished">2019-08-28</time>
-
+      <br/>
+      
     </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/08/28/深入了解HashMap容量为什么是2的幂次方/" class="post-more waves-button">
-                Continue reading...
-            </a>
+  </article>
+            
         </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-    </ul>
-
     
 
 </div>
+
 
         <footer class="footer">
     <div class="footer-content">
