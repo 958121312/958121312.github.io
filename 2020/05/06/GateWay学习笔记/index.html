@@ -6,7 +6,7 @@
     
     
     
-    <title>云霄阁</title>
+    <title>Gateway学习笔记 | 云霄阁</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,13 +39,17 @@
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="云霄阁">
-<meta property="og:url" content="http://yuntian.design/index.html">
+    <meta name="description" content="这章将带你了解为什么使用Gateway代替Zuul网关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gateway学习笔记">
+<meta property="og:url" content="http://yuntian.design/2020/05/06/GateWay学习笔记/index.html">
 <meta property="og:site_name" content="云霄阁">
+<meta property="og:description" content="这章将带你了解为什么使用Gateway代替Zuul网关">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-06T03:17:39.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云霄阁">
+<meta name="twitter:title" content="Gateway学习笔记">
+<meta name="twitter:description" content="这章将带你了解为什么使用Gateway代替Zuul网关">
     
     <link rel="shortcut icon" href="/img/yun.png">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
@@ -58,7 +62,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"   >
+    <aside id="menu"  class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -79,7 +83,7 @@
     <div class="scroll-wrap flex-col">
       <ul class="nav">
         
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/"  >
                     <i class="icon icon-lg icon-home"></i>
                     <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
@@ -141,26 +145,23 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">云霄阁</div>
+        <div class="flex-col header-title ellipsis">Gateway学习笔记</div>
         
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
     </div>
 </header>
-<header class="content-header index-header">
+<header class="content-header post-header">
     
     
     <div class="container fade-scale">
         <div id="myheader">
             <h1 class="title">
-                 
-                    云霄阁
                 
             </h1>
             <h5 class="subtitle">
                 
-                    早知如此相遇不如不遇
                 
             </h5>
         </div>
@@ -168,34 +169,46 @@
 
 </header>
 
+
 <div class="container body-wrap">
-    <ul class="post-list">
     
-        <li class="post-list-item fade">
-            <article id="post-GateWay学习笔记"
-  class="article-card article-type-post" itemprop="blogPost">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-什么是Gateway"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.什么是Gateway</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-为什么使用Gateway而不是使用Zuul"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.为什么使用Gateway而不是使用Zuul</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-Gateway的路由-Router-和断言-Predicate"><span class="post-toc-number">3.</span> <span class="post-toc-text">三.Gateway的路由(Router)和断言(Predicate)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-什么是路由"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.什么是路由</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-断言是什么"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.断言是什么</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过时间匹配"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">通过时间匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过Cookie匹配"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">通过Cookie匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过Header匹配"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">通过Header匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过-Host-匹配"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">通过 Host 匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过请求方法匹配"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">通过请求方法匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过Path匹配"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">通过Path匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过请求参数匹配"><span class="post-toc-number">3.2.7.</span> <span class="post-toc-text">通过请求参数匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过RemoteAddr匹配"><span class="post-toc-number">3.2.8.</span> <span class="post-toc-text">通过RemoteAddr匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#组合匹配"><span class="post-toc-number">3.2.9.</span> <span class="post-toc-text">组合匹配</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-GateWay学习笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-    
+    <div class="post-card">
+        <h1 class="post-card-title">Gateway学习笔记</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-05-06 00:00:00" datetime="2020-05-05T16:00:00.000Z"  itemprop="datePublished">2020-05-06</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式微服务/">分布式微服务</a></li></ul>
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2020/05/06/GateWay学习笔记/">Gateway学习笔记</a>
-    </h3>
-  
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
 
 
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2020-05-06 00:00:00" datetime="2020-05-05T16:00:00.000Z"  itemprop="datePublished">2020-05-06</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>这章将带你了解为什么使用Gateway代替Zuul网关 </p>
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            早知如此相遇不如不遇,醉笑三千席不诉离别意
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这章将带你了解为什么使用Gateway代替Zuul网关 </p>
 <h3 id="一-什么是Gateway"><a href="#一-什么是Gateway" class="headerlink" title="一.什么是Gateway"></a>一.什么是Gateway</h3><p>Spring Cloud Gateway是Spring官方基于Spring 5.0，Spring Boot 2.0和Project Reactor等技术开发的网关，Spring Cloud Gateway旨在为微服务架构提供一种简单而有效的统一的API路由管理方式。Spring Cloud Gateway作为Spring Cloud生态系中的网关，目标是替代Zuul，其不仅提供统一的路由方式，并且基于Filter链的方式提供了网关基本的功能，例如：安全，监控/埋点，和限流等。</p>
 <h3 id="二-为什么使用Gateway而不是使用Zuul"><a href="#二-为什么使用Gateway而不是使用Zuul" class="headerlink" title="二.为什么使用Gateway而不是使用Zuul"></a>二.为什么使用Gateway而不是使用Zuul</h3><p>Spring Cloud Gateway可以看作是Zuul 1.X版本的替代品，因为Zuul 2一直跳票,迟迟不推出,所以Spring Cloud公司决定自己研发一套网关组件,它比Zuul 2更早的使用了Netty实现异步IO，从而它是一个简单,比Zuul高效,与Spring Cloud紧密结合的API网关,所以推荐使用Gateway代替Zuul做API网关。</p>
 <h3 id="三-Gateway的路由-Router-和断言-Predicate"><a href="#三-Gateway的路由-Router-和断言-Predicate" class="headerlink" title="三.Gateway的路由(Router)和断言(Predicate)"></a>三.Gateway的路由(Router)和断言(Predicate)</h3><h4 id="1-什么是路由"><a href="#1-什么是路由" class="headerlink" title="1.什么是路由"></a>1.什么是路由</h4><p>路由是用于匹配用户发送请求的一些规则,例如以下几种</p>
@@ -292,206 +305,64 @@
 <p>#### </p>
 <p><strong>感谢您耐心的看完~</strong></p>
 
-    
-        <div class="post-more-div">
-            <a href="/2020/05/06/GateWay学习笔记/" class="post-more waves-button">
-                Continue reading...
-            </a>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-05-06T03:17:39.913Z" itemprop="dateUpdated">2020-05-06 11:17:39</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/05/06/GateWay学习笔记/" target="_blank" rel="external">http://yuntian.design/2020/05/06/GateWay学习笔记/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://yuntian.design'">
+            <img src="/img/avatar.jpeg" alt="yun tian">
+            <a>yun tian</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+
+
         </div>
     </div>
+
     
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：RabbitMQ安装好后无法访问页面">下一篇：RabbitMQ安装好后无法访问页面</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+
+
 </article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-解决RabbitMQ安装好后无法访问页面问题"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/">RabbitMQ安装好后无法访问页面</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-28 00:00:00" datetime="2019-10-27T16:00:00.000Z"  itemprop="datePublished">2019-10-28</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>有些朋友安装好RabbitMQ后即使打开了服务访问localhost:15672时还是显示【嗯…无法访问此页面】</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/28/解决RabbitMQ安装好后无法访问页面问题/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-后端程序员必备的Linux基础知识"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/27/后端程序员必备的Linux基础知识/">后端程序员必备知识(Linux)</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-27 00:00:00" datetime="2019-10-26T16:00:00.000Z"  itemprop="datePublished">2019-10-27</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>Linux因为是开源的,所以具有较高的安全性,现在几乎所有服务器都会安装在Linux上</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/27/后端程序员必备的Linux基础知识/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-超详细CentOS7下安装redis以及搭建集群-排坑"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/">超详细CentOs7下安装redis以及搭建集群(排坑)</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-10-01 00:00:00" datetime="2019-09-30T16:00:00.000Z"  itemprop="datePublished">2019-10-01</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章会带大家手把手在CentOS7环境下搭建Redis,并且带你一一排坑</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/10/01/超详细CentOS7下安装redis以及搭建集群-排坑/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-深入了解HashMap"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/09/28/深入了解HashMap/">深入了解HashMap</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-09-28 00:00:00" datetime="2019-09-27T16:00:00.000Z"  itemprop="datePublished">2019-09-28</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章是作者学习完HashMap底层源码后的一些心得</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/09/28/深入了解HashMap/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-深入了解HashMap容量为什么是2的幂次方"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/08/28/深入了解HashMap容量为什么是2的幂次方/">深入了解HashMap容量为什么是2的幂次方</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2019-08-28 00:00:00" datetime="2019-08-27T16:00:00.000Z"  itemprop="datePublished">2019-08-28</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>本章通过Java源码通俗易懂的解释了为什么HashMap的初始容量为2的n次幂时效率最高</p>
-    
-        <div class="post-more-div">
-            <a href="/2019/08/28/深入了解HashMap容量为什么是2的幂次方/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-    </ul>
-
-    
 
 </div>
 
