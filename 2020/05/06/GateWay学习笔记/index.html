@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="云霄阁">
 <meta property="og:description" content="这章将带你了解为什么使用Gateway代替Zuul网关">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-06T03:17:39.913Z">
+<meta property="og:updated_time" content="2020-05-06T03:32:20.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gateway学习笔记">
 <meta name="twitter:description" content="这章将带你了解为什么使用Gateway代替Zuul网关">
@@ -209,6 +209,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>这章将带你了解为什么使用Gateway代替Zuul网关 </p>
+<a id="more"></a>
+
 <h3 id="一-什么是Gateway"><a href="#一-什么是Gateway" class="headerlink" title="一.什么是Gateway"></a>一.什么是Gateway</h3><p>Spring Cloud Gateway是Spring官方基于Spring 5.0，Spring Boot 2.0和Project Reactor等技术开发的网关，Spring Cloud Gateway旨在为微服务架构提供一种简单而有效的统一的API路由管理方式。Spring Cloud Gateway作为Spring Cloud生态系中的网关，目标是替代Zuul，其不仅提供统一的路由方式，并且基于Filter链的方式提供了网关基本的功能，例如：安全，监控/埋点，和限流等。</p>
 <h3 id="二-为什么使用Gateway而不是使用Zuul"><a href="#二-为什么使用Gateway而不是使用Zuul" class="headerlink" title="二.为什么使用Gateway而不是使用Zuul"></a>二.为什么使用Gateway而不是使用Zuul</h3><p>Spring Cloud Gateway可以看作是Zuul 1.X版本的替代品，因为Zuul 2一直跳票,迟迟不推出,所以Spring Cloud公司决定自己研发一套网关组件,它比Zuul 2更早的使用了Netty实现异步IO，从而它是一个简单,比Zuul高效,与Spring Cloud紧密结合的API网关,所以推荐使用Gateway代替Zuul做API网关。</p>
 <h3 id="三-Gateway的路由-Router-和断言-Predicate"><a href="#三-Gateway的路由-Router-和断言-Predicate" class="headerlink" title="三.Gateway的路由(Router)和断言(Predicate)"></a>三.Gateway的路由(Router)和断言(Predicate)</h3><h4 id="1-什么是路由"><a href="#1-什么是路由" class="headerlink" title="1.什么是路由"></a>1.什么是路由</h4><p>路由是用于匹配用户发送请求的一些规则,例如以下几种</p>
@@ -311,7 +313,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-05-06T03:17:39.913Z" itemprop="dateUpdated">2020-05-06 11:17:39</time>
+    Last updated: <time datetime="2020-05-06T03:32:20.080Z" itemprop="dateUpdated">2020-05-06 11:32:20</time>
 </span>
 
 
